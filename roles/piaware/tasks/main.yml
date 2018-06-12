@@ -1,0 +1,19 @@
+---
+
+- name: Install PiAware Repository
+  apt:
+    deb: https://flightaware.com/adsb/piaware/files/packages/pool/piaware/p/piaware-support/piaware-repository_3.5.3_all.deb
+
+- name: Update repositories cache and install "piaware" package
+  apt:
+    name: {{ with_items }}
+    update_cache: yes
+  items:
+    - piaware
+    - dump1090-fa
+
+- name: Configure PiAware
+  shell: piaware-config allow-auto-updates yes && sudo piaware-config allow-manual-updates yes
+
+- debug:
+    msg: Reboot Required
