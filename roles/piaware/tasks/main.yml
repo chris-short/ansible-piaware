@@ -17,4 +17,4 @@
   shell: piaware-config allow-auto-updates yes && sudo piaware-config allow-manual-updates yes
 
 - debug:
-    msg: Reboot Required
+    msg: Reboot Required (if fresh install)
