@@ -6,9 +6,10 @@
 
 - name: Update repositories cache and install "piaware" package
   apt:
-    name: {{ with_items }}
+    name: "{{ item }}"
     update_cache: yes
-  items:
+    state: latest
+  with_items:
     - piaware
     - dump1090-fa
 
